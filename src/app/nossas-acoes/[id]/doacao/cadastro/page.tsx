@@ -21,7 +21,7 @@ interface PageProps {
 
 type UserFormValues = z.infer<typeof donationSchema>;
 
-export default function Identificacao({ nextPage, valorDoacao, actionId, changePage }: PageProps) {
+const Identificacao = ({ nextPage, valorDoacao, actionId, changePage }: PageProps) => {
   
   const { control, handleSubmit, setValue } = useForm<UserFormValues>({
     resolver: zodResolver(donationSchema),
@@ -130,3 +130,5 @@ export default function Identificacao({ nextPage, valorDoacao, actionId, changeP
     </Box>
   );
 };
+
+export default Identificacao;
