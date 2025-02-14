@@ -2,7 +2,6 @@
 import { InputCpf, InputTelefone, InputTextField } from '@/components/Inputs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, TextField, Typography, Grid, Grid2 } from '@mui/material';
-import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { number, z } from 'zod';
@@ -21,7 +20,7 @@ interface PageProps {
 
 type UserFormValues = z.infer<typeof donationSchema>;
 
-const Identificacao = ({ nextPage, valorDoacao, actionId, changePage }: PageProps) => {
+const Identificacao: React.FC<PageProps> = ({ nextPage, valorDoacao, actionId, changePage }) => {
   
   const { control, handleSubmit, setValue } = useForm<UserFormValues>({
     resolver: zodResolver(donationSchema),
@@ -33,7 +32,6 @@ const Identificacao = ({ nextPage, valorDoacao, actionId, changePage }: PageProp
     },
   });
 
-  const router = useRouter();
   const { setFeedback } = useContext(AuthContext);
 
   const onSubmit = async (data: UserFormValues) => {
